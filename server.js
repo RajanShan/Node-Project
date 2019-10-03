@@ -29,6 +29,7 @@ function overview(id) {
     carddata = carddata.replace(/{#Quantity#}/g, output[id]["quantity"]);
     carddata = carddata.replace(/{#Price#}/g, output[id]["price"]);
     carddata = carddata.replace(/{#productName#}/g, output[id]["productName"]);
+    carddata=carddata.replace(/{ID%}/g,json["id"]);
     // carddata = carddata.replace(/{#Organic#}/g, output[id]["organic"]);
     if(output[id]["organic"]===false){
         carddata=carddata.replace(/{%NOT_ORGANIC%}/g,"not-organic");
