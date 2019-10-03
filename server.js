@@ -7,9 +7,10 @@ var data = fs.readFileSync("data.json");
 var data = (data + "");
 var output = JSON.parse(data);
 
-
+// console.log(output);
 // var oData=
 function product(id) {
+    console.log(id);
     var productPage = fs.readFileSync("./product.html");
     productPage = productPage + "";
     productPage = productPage.replace(/{#image#}/g, output[id]["image"]);
@@ -23,13 +24,14 @@ function product(id) {
     return productPage;
 }
 function overview(id) {
+    
     var carddata = fs.readFileSync("./cardsTemplates.html");
     carddata = carddata + "";
     carddata = carddata.replace(/{#image#}/g, output[id]["image"]);
     carddata = carddata.replace(/{#Quantity#}/g, output[id]["quantity"]);
     carddata = carddata.replace(/{#Price#}/g, output[id]["price"]);
     carddata = carddata.replace(/{#productName#}/g, output[id]["productName"]);
-    carddata=carddata.replace(/{ID%}/g,json["id"]);
+    carddata = carddata.replace(/{%ID%}/g, output[id]["id"]);
     // carddata = carddata.replace(/{#Organic#}/g, output[id]["organic"]);
     if(output[id]["organic"]===false){
         carddata=carddata.replace(/{%NOT_ORGANIC%}/g,"not-organic");
